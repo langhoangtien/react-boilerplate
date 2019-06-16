@@ -26,6 +26,7 @@ import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
 import List from 'components/ListEdit';
 import ReorderTable from 'components/ReorderTable';
+import LangTable from 'components/LangTable';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
@@ -156,13 +157,12 @@ export function HomePage({
               </label>
             </div>
             <button type="submit">Get github repositories</button>
-
             <Fab onClick={addRow} color="primary" size="small">
               <Add />
             </Fab>
-
             <List handleChange={handleChange} columns={columns} rows={rows} />
             <ReorderTable rows={rows} columnsPr={columns} />
+            <LangTable />
           </Form>
           <ReposList {...reposListProps} />
         </Section>

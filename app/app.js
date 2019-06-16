@@ -11,6 +11,8 @@ import '@babel/polyfill';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createMuiTheme } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
@@ -41,6 +43,18 @@ openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#fff',
+      main: '#41addd',
+      dark: '#000',
+    },
+    secondary: {
+      main: '#f44336',
+    },
+  },
+});
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
@@ -51,7 +65,9 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,

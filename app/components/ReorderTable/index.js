@@ -11,6 +11,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TableSortLabel,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
@@ -59,6 +60,7 @@ function ReorderTable({ columnsPr, rows }) {
               onDrop={() => drop(item)}
             >
               {item.title}
+              <TableSortLabel />
             </TableCell>
           ))}
         </TableRow>
